@@ -50,4 +50,19 @@ class StudentRepositoryTest {
     public void getNullFirstNamesEmail() {
         System.out.println("===============>"+studentRepository.getNullNamesEmailId());
     }
+
+    @Test
+    public void getGuardianEmail() {
+        System.out.println("===============>"+studentRepository.getGuardianNamesFromStudentEmail("Chandan","Kumar"));
+    }
+
+    @Test
+    public void getStudentId() {
+        System.out.println("===============>"+studentRepository.getIdByEmail("cka@ack.ck"));
+    }
+
+    @Test
+    public void updateFirstNameByEmaulId() {
+        System.out.println("===============>"+studentRepository.updateNameBasedOnEmailId("new name","cka@ack.ck"));
+    }
 }
