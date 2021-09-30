@@ -1,5 +1,7 @@
 package com.ck.dev.springdatajpalearning.entities;
 
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ import javax.persistence.*;
                 columnNames = {"email_address", "f_name"}
         )
 )
+@ToString
 public class Student {
     @Id
     @SequenceGenerator(
@@ -27,15 +30,18 @@ public class Student {
     private String firstName;
     @Column(name = "l_name")
     private String lastName;
-    @Column(name = "guardian_name")
-    private String guardianName;
     @Column(name = "email_address",
             nullable = false)
     private String emailId;
-    @Column(name = "guardian_email")
+    /*@Column(name = "guardian_email")
     private String guardianEmail;
     @Column(name = "guardian_mob_no")
     private String guardianMobile;
+    @Column(name = "guardian_name")
+    private String guardianName;*/
+
+    @Embedded
+    private Guardian guardian;
 
     public void setStudentId(Long studentId) {
         this.studentId = studentId;
@@ -45,14 +51,11 @@ public class Student {
         return studentId;
     }
 
-    public Student(Long studentId, String firstName, String lastName, String guardianName, String emailId, String guardianEmail, String guardianMobile) {
-        this.studentId = studentId;
+    public Student(String firstName, String lastName, String emailId, Guardian guardian) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.guardianName = guardianName;
         this.emailId = emailId;
-        this.guardianEmail = guardianEmail;
-        this.guardianMobile = guardianMobile;
+        this.guardian = guardian;
     }
 
     public Student() {
@@ -74,14 +77,6 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getGuardianName() {
-        return guardianName;
-    }
-
-    public void setGuardianName(String guardianName) {
-        this.guardianName = guardianName;
-    }
-
     public String getEmailId() {
         return emailId;
     }
@@ -90,19 +85,11 @@ public class Student {
         this.emailId = emailId;
     }
 
-    public String getGuardianEmail() {
-        return guardianEmail;
+    public Guardian getGuardian() {
+        return guardian;
     }
 
-    public void setGuardianEmail(String guardianEmail) {
-        this.guardianEmail = guardianEmail;
-    }
-
-    public String getGuardianMobile() {
-        return guardianMobile;
-    }
-
-    public void setGuardianMobile(String guardianMobile) {
-        this.guardianMobile = guardianMobile;
+    public void setGuardian(Guardian guardian) {
+        this.guardian = guardian;
     }
 }
