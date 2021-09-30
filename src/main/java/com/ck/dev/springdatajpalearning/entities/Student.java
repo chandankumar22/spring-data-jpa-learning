@@ -1,14 +1,26 @@
 package com.ck.dev.springdatajpalearning.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(
+        name = "students",
+        uniqueConstraints = @UniqueConstraint(
+                name = "student_non_nulls",
+                columnNames = {"email_address", "f_name"}
+        )
+)
 public class Student {
     @Id
-    @GeneratedValue
+    @SequenceGenerator(
+            name = "student_id_seq",
+            sequenceName = "student_id_seq_name",
+            allocationSize = 2
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "student_id_seq"
+    )
     private Long studentId;
 
     @Column(name = "f_name")
@@ -17,7 +29,8 @@ public class Student {
     private String lastName;
     @Column(name = "guardian_name")
     private String guardianName;
-    @Column(name = "email_address")
+    @Column(name = "email_address",
+            nullable = false)
     private String emailId;
     @Column(name = "guardian_email")
     private String guardianEmail;
