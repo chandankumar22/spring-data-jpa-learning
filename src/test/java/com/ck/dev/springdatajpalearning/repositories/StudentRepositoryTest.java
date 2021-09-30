@@ -17,10 +17,10 @@ class StudentRepositoryTest {
     @Test
     public void saveStudent() {
         studentRepository.save(new Student(
-                "Chandan", "Kumar", "ckaa@ack.ck", Guardian.builder().guardianEmail("gemail.em").guardianMob("1234").guardianName("anish kumar").build()
+                null, "Kumar", "ckasa@ack.ck", Guardian.builder().guardianEmail("gemail.em").guardianMob("1234").guardianName("anish kumar").build()
         ));
         studentRepository.save(new Student(
-                "Anish", "Kumar", "aaka@ack.ck", Guardian.builder().guardianEmail("gemail.em").guardianMob("1234").guardianName("anish kumar").build()
+                null, "Kumar", "asaka@ack.ck", Guardian.builder().guardianEmail("gemail.em").guardianMob("1234").guardianName("anish kumar").build()
         ));
     }
 
@@ -41,4 +41,13 @@ class StudentRepositoryTest {
         System.out.println("===============>"+studentRepository.countDistinctByFirstNameIsNotNull());
     }
 
+    @Test
+    public void getUniquwNameCounts() {
+        System.out.println("===============>"+studentRepository.getUniqueNameCount());
+    }
+
+    @Test
+    public void getNullFirstNamesEmail() {
+        System.out.println("===============>"+studentRepository.getNullNamesEmailId());
+    }
 }
