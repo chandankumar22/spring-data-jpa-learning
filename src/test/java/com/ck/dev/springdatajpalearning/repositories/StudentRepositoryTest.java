@@ -8,8 +8,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 class StudentRepositoryTest {
 
@@ -19,7 +17,10 @@ class StudentRepositoryTest {
     @Test
     public void saveStudent() {
         studentRepository.save(new Student(
-                "Chandan", "Kumar", "cka@ack.ck", Guardian.builder().guardianEmail("gemail.em").guardianMob("1234").guardianName("anish kumar").build()
+                "Chandan", "Kumar", "ckaa@ack.ck", Guardian.builder().guardianEmail("gemail.em").guardianMob("1234").guardianName("anish kumar").build()
+        ));
+        studentRepository.save(new Student(
+                "Anish", "Kumar", "aaka@ack.ck", Guardian.builder().guardianEmail("gemail.em").guardianMob("1234").guardianName("anish kumar").build()
         ));
     }
 
@@ -28,4 +29,16 @@ class StudentRepositoryTest {
         List<Student> all = studentRepository.findAll();
         all.forEach(System.out::println);
     }
+
+    @Test
+    public void getStudentsByEmnail() {
+        List<Student> all = studentRepository.findStudentsByEmailIdContains("ck");
+        all.forEach(System.out::println);
+    }
+
+    @Test
+    public void getNonNullNameCounts() {
+        System.out.println("===============>"+studentRepository.countDistinctByFirstNameIsNotNull());
+    }
+
 }
