@@ -22,8 +22,8 @@ class TeacherlRepositoryTest {
     @Test
     public void addTeachers(){
         List<Course> all = courseRepository.findAll();
-        teacherlRepository.save(Teacher.builder().courses(all.subList(0,2)).fName("Sangram").lName("Singh").build());
-        teacherlRepository.save(Teacher.builder().courses(all.subList(2,4)).fName("Mohan").lName("Kumar").build());
+       // teacherlRepository.save(Teacher.builder().courses(all.subList(0,2)).fName("Sangram").lName("Singh").build());
+       // teacherlRepository.save(Teacher.builder().courses(all.subList(2,4)).fName("Mohan").lName("Kumar").build());
     }
 
 }

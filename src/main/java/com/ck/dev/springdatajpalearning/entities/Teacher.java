@@ -29,13 +29,15 @@ public class Teacher {
     private String fName;
     private String lName;
 
-    @OneToMany(
+    //JPA recommends to use many to one relationship whenever possible, the overall structure of the db will be
+    //same but rather than defining the list of courses here, we will define the teacher id in the course table
+    /*@OneToMany(
             cascade = CascadeType.MERGE
     )
     @JoinColumn(
             name = "teacher_id",
             referencedColumnName = "teacherId"
     )
-    private List<Course> courses;
+    private List<Course> courses;*/
 
 }

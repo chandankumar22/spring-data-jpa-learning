@@ -2,6 +2,7 @@ package com.ck.dev.springdatajpalearning.repositories;
 
 import com.ck.dev.springdatajpalearning.entities.Course;
 import com.ck.dev.springdatajpalearning.entities.CourseMaterial;
+import com.ck.dev.springdatajpalearning.entities.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,11 +34,49 @@ class CourseMaterialRepositoryTest {
         //courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("ववव.aa.aa").course(Course.builder().courseCredit(12).courseTitle("Sanskrit").build()).build());
 
         //To solve this issue , hibernate provides the cascading concepts, provide cascade attribute to the @OneToOne mapped object
-        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("ववव.aa.aa").course(Course.builder().courseCredit(12).courseTitle("Sanskrit").build()).build());
-        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("saas.aa.aa").course(Course.builder().courseCredit(10).courseTitle("Hindi").build()).build());
-        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("dfcx.aa.aa").course(Course.builder().courseCredit(8).courseTitle("Maths").build()).build());
-        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("cvcfd.aa.aa").course(Course.builder().courseCredit(6).courseTitle("Science").build()).build());
-        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("cvcv.aa.aa").course(Course.builder().courseCredit(4).courseTitle("English").build()).build());
+
+        Teacher teacher1 = Teacher.builder().fName("Pankaj").lName("Sri").build();
+        Teacher teacher2 = Teacher.builder().fName("Mona").lName("Lisa").build();
+        Teacher teacher3 = Teacher.builder().fName("Ramanujan").lName("Mathiya").build();
+        Teacher teacher4 = Teacher.builder().fName("Moliyta").lName("Suke").build();
+        Teacher teacher5 = Teacher.builder().fName("A.Kumwer").lName("Santre").build();
+        Teacher teacher6 = Teacher.builder().fName("Poybin").lName("Mathiya").build();
+
+        courseMaterialRepository.save(
+                CourseMaterial.builder().courseMaterialUrl("ववव.aa.aa")
+                        .course(Course.builder()
+                                .courseCredit(12)
+                                .courseTitle("Data Structures and Algorithms")
+                                .teacher(teacher1)
+                                .build()).build());
+        courseMaterialRepository.save(
+                CourseMaterial.builder().courseMaterialUrl("helloc.com")
+                        .course(Course.builder()
+                                .courseCredit(6)
+                                .courseTitle("Operating System")
+                                .teacher(teacher2)
+                                .build()).build());
+        courseMaterialRepository.save(
+                CourseMaterial.builder().courseMaterialUrl("helloc.com")
+                        .course(Course.builder()
+                                .courseCredit(2)
+                                .courseTitle("Machine Learning")
+                                .teacher(teacher3)
+                                .build()).build());
+        courseMaterialRepository.save(
+                CourseMaterial.builder().courseMaterialUrl("helloc.com")
+                        .course(Course.builder()
+                                .courseCredit(10)
+                                .courseTitle("Big Data Analytics")
+                                .teacher(teacher4)
+                                .build()).build());
+        courseMaterialRepository.save(
+                CourseMaterial.builder().courseMaterialUrl("gelloc.com")
+                        .course(Course.builder()
+                                .courseCredit(5)
+                                .courseTitle("Behavioural Science")
+                                .teacher(teacher5)
+                                .build()).build());
 
     }
 
