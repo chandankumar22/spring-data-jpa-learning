@@ -27,4 +27,11 @@ public class Course {
     private long courseId;
     private String courseTitle;
     private int courseCredit;
+
+    /*
+    * to achieve bi-directional one to one mapping, we need to map the foreign key in class B(course material here) with
+    * the reference of class B in class A (Course here)
+    * */
+    @OneToOne(mappedBy = "course")
+    private CourseMaterial courseMaterial;
 }

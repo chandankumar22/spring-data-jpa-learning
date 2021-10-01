@@ -1,17 +1,14 @@
 package com.ck.dev.springdatajpalearning.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "course")
 public class CourseMaterial {
 
     @Id

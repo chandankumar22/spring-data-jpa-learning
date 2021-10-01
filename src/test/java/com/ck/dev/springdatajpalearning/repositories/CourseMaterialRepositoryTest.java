@@ -34,6 +34,15 @@ class CourseMaterialRepositoryTest {
 
         //To solve this issue , hibernate provides the cascading concepts, provide cascade attribute to the @OneToOne mapped object
         courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("ववव.aa.aa").course(Course.builder().courseCredit(12).courseTitle("Sanskrit").build()).build());
+        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("saas.aa.aa").course(Course.builder().courseCredit(10).courseTitle("Hindi").build()).build());
+        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("dfcx.aa.aa").course(Course.builder().courseCredit(8).courseTitle("Maths").build()).build());
+        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("cvcfd.aa.aa").course(Course.builder().courseCredit(6).courseTitle("Science").build()).build());
+        courseMaterialRepository.save(CourseMaterial.builder().courseMaterialUrl("cvcv.aa.aa").course(Course.builder().courseCredit(4).courseTitle("English").build()).build());
 
+    }
+
+    @Test
+    public void getAll(){
+        System.out.println(courseMaterialRepository.findAll());
     }
 }
